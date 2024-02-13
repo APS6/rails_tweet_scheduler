@@ -1,0 +1,6 @@
+<h1>Tweets</h1>
+<% if Current.user.twitter_accounts.any? %>
+	<%= link_to "Schedule a tweet", new_tweet_path %>
+<% end %>
+
+<%= render @tweets %>

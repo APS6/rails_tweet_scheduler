@@ -1,0 +1,14 @@
+<div>
+	<%= tweet.body %>
+		<%= image_tag tweet.twitter_account.image %>
+	<%= tweet.twitter_account.username %>
+	<div>
+			<% if tweet.published? %>
+		<%= link_to "View tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}" %>
+		<% else %>
+		Scheduled for <%= l tweet.publish_at, format: :short %>
+		<div><%= link_to "Edit", edit_tweet_path(tweet) %></div>
+		<div><%= button_to "delete", tweet, method: :delete, data: { confirm: "Are you sure"} %></div>
+	<% end %>
+	</div>
+</div>

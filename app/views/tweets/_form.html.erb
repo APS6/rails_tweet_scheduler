@@ -1,0 +1,24 @@
+<%= form_with model: tweet do |form| %>
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <% form.object.errors.full_messages.each do |message|%>
+        <%= message%>
+      <% end %>
+    </div>
+  <% end %>
+
+	<div>
+		<%= form.label :twitter_account_id %>
+		<%= form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, {}, {class: "form-control"} %>
+	</div>
+
+	<div>
+		<%= form.label :body %>
+		<%= form.text_area :body %>
+	</div>
+	<div>
+		<%= form.label :publish_at %>
+		<%= form.datetime_select :publish_at %>
+	</div>
+	<%= form.button "Schedule" %>
+<% end %>

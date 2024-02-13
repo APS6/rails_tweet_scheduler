@@ -1,7 +1,16 @@
 <nav class="d-flex">
-    <h3>Navbar</h3>
-    <ul class="navbar-nav">
-        <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/about">About</a></li>
-    </ul>
+  <h3>Navbar</h3>
+  <ul class="navbar-nav d-flex">
+    <li class="nav-item"><a href="/">Home</a></li>
+    <li class="nav-item"><%= link_to "Tweets", tweets_path %></li>
+    <li class="nav-item"><a href="/about">About</a></li>
+    <li class="nav-item"><%= link_to "Twitter Accounts", twitter_accounts_path %></li>
+  </ul>
+  <% if Current.user %>
+    <%= link_to Current.user.email, edit_password_path %>
+    <%= button_to "Logout", logout_path, method: :delete%>
+  <% else %>
+    <%= link_to "Sign up", sign_up_path  -%>
+    <%= link_to "Login", sign_in_path  -%>
+  <% end %>
 </nav>

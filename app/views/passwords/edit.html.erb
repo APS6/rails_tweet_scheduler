@@ -1,0 +1,19 @@
+<h1>Change Password </h1>
+<%= form_with model: Current.user, url: edit_password_path do |form| %>
+  <% if Current.user.errors.any? %>
+    <div class="alert alert-danger">
+      <% Current.user.errors.full_messages.each do |message|%>
+        <%= message%>
+      <% end %>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+  <div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+  <%= form.submit "Update" %>
+<% end %>
